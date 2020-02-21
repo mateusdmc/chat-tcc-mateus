@@ -75,12 +75,11 @@ div {
 .chat-column {
   display: flex;
   flex-direction: column;
-  height: 90%;
+  height: 85%;
   padding: 0.9375rem 0 0.625rem 0;
   margin: auto;
-  margin-top: 10px;
   text-align: left;
-  max-width: 35rem;
+  max-width: 25rem;
   min-width: 9.375rem;
 }
 
