@@ -20,10 +20,9 @@
 var express = require('express'); // app server
 var bodyParser = require('body-parser'); // parser for post requests
 var AssistantV2 = require('ibm-watson/assistant/v2'); // watson sdk
-const { IamAuthenticator , BearerTokenAuthenticator } = require ( 'ibm-watson/auth' );
+const { IamAuthenticator } = require('ibm-watson/auth');
 
 var app = express();
-require ( './health/health' ) (app);
 
 // Bootstrap application settings
 app.use(express.static('./public')); // load UI from public folder
@@ -31,22 +30,12 @@ app.use(bodyParser.json());
 
 // Create the service wrapper
 
-//deixe o  autenticador;
-if  (processo.env.ASSISTANT_IAM_APIKEY)  {
-  autenticador = new IamAuthenticator ( {
-    apikey:processo.env.ASSISTANT_IAM_APIKEY
-  } );
-}  else if (process.env.BEARER_TOKEN)  {
-  authenticator = new BearerTokenAuthenticator ( {
-    bearerToken:processo.env.BEARER_TOKEN
-  } );
-}
-
 var assistant = new AssistantV2({
   version: '2019-02-28',
-  autenticador : autenticador,
+  authenticator: new IamAuthenticator({
+    apikey: process.env.ASSISTANT_IAM_APIKEY,
+  }),
   url: process.env.ASSISTANT_URL,
-  disableSslVerification:processo.env.DISABLE_SSL_VERIFICATION === 'verdadeiro' ? verdadeiro : falso
 });
 
 // Endpoint to be call from the client side
