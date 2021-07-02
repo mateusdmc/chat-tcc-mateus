@@ -110,6 +110,22 @@
     </footer>
     <!--Fim roda-pé-->
 
+    <!--novo-bot-->
+    <script>
+      window.watsonAssistantChatOptions = {
+          integrationID: "f8ce9a87-94da-468a-a77b-b34c5566b2ba", // The ID of this integration.
+          region: "us-south", // The region your integration is hosted in.
+          serviceInstanceID: "53386379-80cc-49ce-9e54-4994da62c523", // The ID of your service instance.
+          onLoad: function(instance) { instance.render(); }
+        };
+      setTimeout(function(){
+        const t=document.createElement('script');
+        t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+        document.head.appendChild(t);
+      });
+    </script>
+    <!--Fim novo-bot-->
+
     <!--Scripts-->
   	<script src="js/jquery-3.4.1.min.js"></script>
   	<script src="js/popper.min.js"></script>
